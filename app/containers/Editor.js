@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Slider from '@material-ui/lab/Slider';
+import Tooltip from '@material-ui/core/Tooltip';
 import thumbnail from '../images/thumbnail.svg';
 
 class Editor extends Component {
@@ -9,7 +11,15 @@ class Editor extends Component {
     selectedFile: null,
     fileName: '',
     imageUploaded: false,
-    processing: false
+    processing: false,
+    hue: 0,
+    contrast: 0,
+    vibrance: 0,
+    sepia: 0,
+    saturation: 0,
+    brightness: 0,
+    noise: 0,
+    stackBlur: 0
   };
 
   componentDidMount() {
@@ -67,7 +77,6 @@ class Editor extends Component {
       label: 'Jarques',
       name: 'jarques'
     },
-
     {
       label: 'Sin City',
       name: 'sinCity'
@@ -115,6 +124,18 @@ class Editor extends Component {
         false
       );
     }
+  };
+
+  applyFilter = value => {
+    const { imageUploaded, selectedFile } = this.state;
+    if (!imageUploaded) {
+      return;
+    }
+    this.setState(value);
+    window.Caman('canvas', selectedFile, result => {
+      const [key] = Object.keys(value);
+      result[key](value[key]).render();
+    });
   };
 
   applyEffect = effectName => {
@@ -165,6 +186,16 @@ class Editor extends Component {
     if (!imageUploaded) {
       return;
     }
+    this.setState({
+      hue: 0,
+      noise: 0,
+      contrast: 0,
+      vibrance: 0,
+      sepia: 0,
+      saturation: 0,
+      brightness: 0,
+      stackBlur: 0
+    });
     window.Caman('canvas', selectedFile, result => {
       result.revert();
     });
@@ -197,6 +228,16 @@ class Editor extends Component {
 
   render() {
     const { processing } = this.state;
+    const {
+      hue,
+      contrast,
+      vibrance,
+      sepia,
+      saturation,
+      brightness,
+      stackBlur,
+      noise
+    } = this.state;
     return (
       <Grid container>
         <Grid item xs={8}>
@@ -265,6 +306,136 @@ class Editor extends Component {
             alignItems="center"
             direction="column"
           >
+            <Grid item xs={12} style={{ width: '100%' }} className="filters">
+              <Tooltip title={hue} placement="top">
+                <div>
+                  Hue
+                  <Slider
+                    value={hue}
+                    aria-labelledby="label"
+                    min={0}
+                    max={300}
+                    onChange={(event, value) => {
+                      this.applyFilter({
+                        hue: value
+                      });
+                    }}
+                  />
+                </div>
+              </Tooltip>
+              <Tooltip title={contrast} placement="top">
+                <div>
+                  Contrast
+                  <Slider
+                    value={contrast}
+                    aria-labelledby="label"
+                    min={-80}
+                    max={80}
+                    onChange={(event, value) => {
+                      this.applyFilter({
+                        contrast: value
+                      });
+                    }}
+                  />
+                </div>
+              </Tooltip>
+              <Tooltip title={stackBlur} placement="top">
+                <div>
+                  StackBlur
+                  <Slider
+                    value={stackBlur}
+                    aria-labelledby="label"
+                    min={0}
+                    max={10}
+                    onChange={(event, value) => {
+                      this.applyFilter({
+                        stackBlur: value
+                      });
+                    }}
+                  />
+                </div>
+              </Tooltip>
+              <Tooltip title={noise} placement="top">
+                <div>
+                  Noise
+                  <Slider
+                    value={noise}
+                    aria-labelledby="label"
+                    min={0}
+                    max={100}
+                    onChange={(event, value) => {
+                      this.applyFilter({
+                        noise: value
+                      });
+                    }}
+                  />
+                </div>
+              </Tooltip>
+              <Tooltip title={vibrance} placement="top">
+                <div>
+                  Vibrance
+                  <Slider
+                    value={vibrance}
+                    aria-labelledby="label"
+                    min={0}
+                    max={400}
+                    onChange={(event, value) => {
+                      this.applyFilter({
+                        vibrance: value
+                      });
+                    }}
+                  />
+                </div>
+              </Tooltip>
+              <Tooltip title={sepia} placement="top">
+                <div>
+                  Sepia
+                  <Slider
+                    value={sepia}
+                    aria-labelledby="label"
+                    min={0}
+                    max={100}
+                    onChange={(event, value) => {
+                      this.applyFilter({
+                        sepia: value
+                      });
+                    }}
+                  />
+                </div>
+              </Tooltip>
+              <Tooltip title={brightness} placement="top">
+                <div>
+                  Brightness
+                  <Slider
+                    value={brightness}
+                    min={-50}
+                    max={50}
+                    aria-labelledby="label"
+                    onChange={(event, value) => {
+                      this.applyFilter({
+                        brightness: value
+                      });
+                    }}
+                  />
+                </div>
+              </Tooltip>
+              <Tooltip title={saturation} placement="top">
+                <div>
+                  Saturation
+                  <Slider
+                    value={saturation}
+                    min={-50}
+                    max={50}
+                    aria-labelledby="label"
+                    onChange={(event, value) => {
+                      this.applyFilter({
+                        saturation: value
+                      });
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </Grid>
             <Grid item xs={12}>
               <Button
                 size="large"

@@ -45,3 +45,7 @@ html {
 canvas {
   cursor: pointer;
 }
+
+.filters {
+  color: darkviolet;
+}
