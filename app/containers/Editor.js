@@ -116,7 +116,15 @@ class Editor extends Component {
           this.setState({
             selectedFile: reader.result,
             fileName: file.name,
-            imageUploaded: true
+            imageUploaded: true,
+            hue: 0,
+            contrast: 0,
+            vibrance: 0,
+            sepia: 0,
+            saturation: 0,
+            brightness: 0,
+            noise: 0,
+            stackBlur: 0
           });
           const { selectedFile } = this.state;
           this.loadImageOnCanvasBorad(selectedFile);
