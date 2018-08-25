@@ -452,7 +452,7 @@ class Editor extends Component {
                 fullWidth
                 onClick={this.saveImage}
               >
-                Download
+                Save
               </Button>
             </Grid>
             <Grid item xs={12}>
