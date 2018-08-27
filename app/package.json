@@ -1,8 +1,8 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "electron-react-boilerplate",
+  "name": "picart",
+  "productName": "PicArt",
   "version": "1.0.0",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
+  "description": "A handy image editor powered by electron.",
   "main": "./main.prod.js",
   "author": {
     "name": "Bharathvaj Ganesan",
