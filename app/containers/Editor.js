@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import thumbnail from '../images/thumbnail.svg';
 
 class Editor extends Component {
   state = {
     selectedFile: null,
     fileName: '',
-    imageUploaded: false
+    imageUploaded: false,
+    processing: false
   };
 
   componentDidMount() {
@@ -15,6 +17,10 @@ class Editor extends Component {
   }
 
   fileInput = React.createRef();
+
+  maxWidth = 500;
+
+  maxHeight = 500;
 
   effects = [
     {
@@ -84,15 +90,15 @@ class Editor extends Component {
   }
 
   onFileUpload = e => {
-    this.setState({
-      imageUploaded: false
-    });
     e.preventDefault();
     const file = e.target.files[0];
     const reader = new FileReader();
 
     // Check for file
     if (file) {
+      this.setState({
+        imageUploaded: false
+      });
       reader.readAsDataURL(file);
 
       reader.addEventListener(
@@ -112,23 +118,56 @@ class Editor extends Component {
   };
 
   applyEffect = effectName => {
-    const { imageUploaded } = this.state;
+    const { imageUploaded, selectedFile } = this.state;
     if (!imageUploaded) {
       return;
     }
-    window.Caman('canvas', result => {
-      result[effectName]().render();
-      // result.herMajesty().render();
+    window.Caman('canvas', selectedFile, result => {
+      result.revert();
+      this.setState({
+        processing: true
+      });
+      this.canvasBoard.style.visibility = 'hidden';
+      result[effectName]().render(() => {
+        // Create image
+        const img = new Image();
+        // Set image src
+        img.src = selectedFile;
+        // On image load add to canvas
+        img.onload = () => {
+          let ratio = 1;
+          let { width, height } = img;
+          if (width > this.maxWidth) {
+            ratio = this.maxWidth / width; // get ratio for scaling image
+            height *= ratio; // Reset height to match scaled image
+            width *= ratio; // Reset width to match scaled image
+          }
+
+          // Check if current height is larger than max
+          if (height > this.maxHeight) {
+            ratio = this.maxHeight / height; // get ratio for scaling image
+            width *= ratio; // Reset width to match scaled image
+            height *= ratio; // Reset height to match scaled image
+          }
+          this.canvasBoard.style.width = `${width}px`;
+          this.canvasBoard.style.height = `${height}px`;
+          this.canvasBoard.style.visibility = 'visible';
+          this.setState({
+            processing: false
+          });
+        };
+      });
     });
   };
 
   resetEffects = () => {
-    const { imageUploaded } = this.state;
+    const { imageUploaded, selectedFile } = this.state;
     if (!imageUploaded) {
       return;
     }
-    const { selectedFile } = this.state;
-    this.loadImageOnCanvasBorad(selectedFile);
+    window.Caman('canvas', selectedFile, result => {
+      result.revert();
+    });
   };
 
   saveImage = () => {
@@ -157,6 +196,7 @@ class Editor extends Component {
   };
 
   render() {
+    const { processing } = this.state;
     return (
       <Grid container>
         <Grid item xs={8}>
@@ -170,6 +210,21 @@ class Editor extends Component {
             }}
           />
           <div style={{ display: 'flex' }}>
+            {processing ? (
+              <CircularProgress
+                size={100}
+                thickness={4}
+                variant="indeterminate"
+                style={{
+                  position: 'fixed',
+                  left: 'calc(100% - 67%)',
+                  top: 'calc(100% - 70%)'
+                }}
+              />
+            ) : (
+              ''
+            )}
+
             <canvas
               className="canvasBoard"
               width={500}

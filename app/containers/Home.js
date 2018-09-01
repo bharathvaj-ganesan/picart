@@ -9,7 +9,12 @@ class Home extends Component {
     return (
       <Grid container justify="center" spacing={8}>
         <Grid item xs={10}>
-          <h2 className="text__primary text--center">PiC ArT</h2>
+          <h1
+            className="text__primary text--center"
+            style={{ fontSize: '3rem' }}
+          >
+            PICART
+          </h1>
           <Editor />
         </Grid>
       </Grid>
