@@ -32,7 +32,7 @@ A handy image editor powered by electron.
 
 <div align="center">
 
-![PICART DEMO](./internals/img/snapshot.jpg)
+<img src="./internals/img/snapshot.jpg" width="600px" />
 
 </div>
 
