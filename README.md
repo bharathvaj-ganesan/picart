@@ -32,7 +32,7 @@ A handy image editor powered by electron.
 
 <div align="center">
 
-![Electron Boilerplate Demo](https://cloud.githubusercontent.com/assets/3382565/10557547/b1f07a4e-74e3-11e5-8d27-79ab6947d429.gif)
+![PICART DEMO](./internals/img/snapshot.jpg)
 
 </div>
 
@@ -86,11 +86,6 @@ $ yarn package -- --[option]
 ```bash
 DEBUG_PROD=true yarn package
 ```
-
-## How to add modules to the project
-
-You will need to add other modules to this boilerplate, depending on the requirements of your project. For example, you may want to add [node-postgres](https://github.com/brianc/node-postgres) to communicate with PostgreSQL database, or
-[material-ui](http://www.material-ui.com/) to reuse react UI components.
 
 ⚠️ Please read the following section before installing any dependencies ⚠️
 
