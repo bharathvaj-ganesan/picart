@@ -1,6 +1,6 @@
 <div align="center">
 <br>
-<img src="./internals/img/logo.png" width="200px" />
+<img src="./internals/img/logo.png" width="200" />
 
 </div>
 
@@ -32,7 +32,7 @@ A handy image editor powered by electron.
 
 <div align="center">
 
-<img src="./internals/img/snapshot.jpg" width="600px" />
+<img src="./internals/img/snapshot.jpg" width="600" />
 
 </div>
 
