@@ -104,4 +104,6 @@ This boilerplate uses a [two package.json structure](https://github.com/electron
 2. If a module is `import`ed by another module, include it in `dependencies` in `./package.json`. See [this ESLint rule](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md). Examples of such modules are `material-ui`, `redux-form`, and `moment`.
 3. Otherwise, modules used for building, testing and debugging should be included in `devDependencies` in `./package.json`.
 
+<hr>
+
 Apache License 2.0 © [Bharathvaj Ganesan](http://bharathvajganesan.me)
