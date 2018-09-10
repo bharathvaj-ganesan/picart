@@ -6,7 +6,6 @@ import {
 } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 import deepPurple from '@material-ui/core/colors/deepPurple';
-import Router from '../router';
 
 const theme = createMuiTheme({
   palette: {
