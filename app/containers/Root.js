@@ -6,6 +6,7 @@ import {
 } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 import deepPurple from '@material-ui/core/colors/deepPurple';
+import Home from './Home';
 
 const theme = createMuiTheme({
   palette: {
@@ -20,7 +21,7 @@ class Root extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <Router />
+        <Home />
       </MuiThemeProvider>
     );
   }
