@@ -91,7 +91,7 @@ DEBUG_PROD=true yarn package
 
 ### Module Structure
 
-This boilerplate uses a [two package.json structure](https://github.com/electron-userland/electron-builder/wiki/Two-package.json-Structure). This means, you will have two `package.json` files.
+This app uses a [two package.json structure](https://github.com/electron-userland/electron-builder/wiki/Two-package.json-Structure). This means, you will have two `package.json` files.
 
 1. `./package.json` in the root of your project
 1. `./app/package.json` inside `app` folder
@@ -106,4 +106,4 @@ This boilerplate uses a [two package.json structure](https://github.com/electron
 
 <hr>
 
-Apache License 2.0 © [Bharathvaj Ganesan](http://bharathvajganesan.me)
+Apache License 2.0 © [Bharathvaj Ganesan](https://bharathvajganesan.me)

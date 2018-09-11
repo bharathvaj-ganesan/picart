@@ -38,8 +38,8 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.develar.ElectronReact",
+    "productName": "Picart",
+    "appId": "com.bharath.picart",
     "files": [
       "dist/",
       "node_modules/",
@@ -84,9 +84,9 @@
     "url": "git+https://github.com/chentsulin/electron-react-boilerplate.git"
   },
   "author": {
-    "name": "C. T. Lin",
-    "email": "chentsulin@gmail.com",
-    "url": "https://github.com/chentsulin"
+    "name": "Bharathvaj Ganesan",
+    "email": "bharathvaj1995@gmail.com",
+    "url": "https://bharathvajganesan.me"
   },
   "license": "MIT",
   "bugs": {
