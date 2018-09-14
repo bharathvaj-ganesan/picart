@@ -20,7 +20,6 @@
     "package-win": "yarn build && electron-builder build --win --x64",
     "postinstall": "node -r babel-register internals/scripts/CheckNativeDep.js && yarn build-dll && electron-builder install-app-deps package.json",
     "postlint-fix": "prettier --ignore-path .eslintignore --single-quote --write '**/*.js'",
-    "precommit": "lint-staged",
     "prestart": "yarn build",
     "start": "cross-env NODE_ENV=production electron ./app/",
     "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron -r babel-register ./app/main.dev.js",
