@@ -3,3 +3,45 @@
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
 @import '~@fortawesome/fontawesome-free/css/all.css';
+
+html {
+  font-family: 'Roboto', sans-serif;
+  background-color: #eeeeee;
+}
+
+.text__primary {
+  color: #9c27b0;
+}
+
+.text__secondary {
+  color: rgb(72, 40, 128);
+}
+
+.canvasBoard {
+  margin: auto;
+  /* background: #ffffff; */
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.text--center {
+  text-align: center;
+}
+
+.btn__download {
+  background-color: #8bc34a !important;
+  color: #ffffff !important;
+  width: 15rem !important;
+  margin-top: 2rem !important;
+}
+
+.btn__reset {
+  background-color: #ff1744 !important;
+  color: #ffffff !important;
+  width: 15rem !important;
+  margin-top: 2rem !important;
+}
+
+canvas {
+  cursor: pointer;
+}

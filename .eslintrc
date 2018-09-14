@@ -25,6 +25,8 @@
     "promise/always-return": "error",
     "promise/catch-or-return": "error",
     "promise/no-native": "off",
+    "react/no-unused-state": "off",
+    "class-methods-use-this": "off",
     "react/sort-comp": [
       "error",
       {
