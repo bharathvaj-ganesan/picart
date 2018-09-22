@@ -1,7 +1,7 @@
 {
   "name": "picart",
   "productName": "PicArt",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A handy image editor powered by electron.",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
@@ -14,7 +14,7 @@
     "lint-fix": "yarn --silent lint --fix; exit 0",
     "lint-styles": "stylelint --ignore-path .eslintignore '**/*.*(css|scss)' --syntax scss",
     "lint-styles-fix": "yarn --silent lint-styles --fix; exit 0",
-    "package": "yarn build && electron-builder build --publish never",
+    "package": "standard-version && yarn build && electron-builder build --publish never",
     "package-all": "yarn build && electron-builder build -mwl",
     "package-linux": "yarn build && electron-builder build --linux",
     "package-win": "yarn build && electron-builder build --win --x64",
@@ -180,6 +180,7 @@
     "sass-loader": "^7.0.3",
     "sinon": "^6.1.4",
     "spectron": "^3.8.0",
+    "standard-version": "^4.4.0",
     "style-loader": "^0.21.0",
     "stylelint": "^9.4.0",
     "stylelint-config-standard": "^18.2.0",
