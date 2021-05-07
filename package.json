@@ -180,7 +180,7 @@
     "sass-loader": "^7.0.3",
     "sinon": "^6.1.4",
     "spectron": "^3.8.0",
-    "standard-version": "^4.4.0",
+    "standard-version": "^8.0.1",
     "style-loader": "^0.21.0",
     "stylelint": "^9.4.0",
     "stylelint-config-standard": "^18.2.0",
